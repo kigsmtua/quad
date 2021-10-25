@@ -56,9 +56,6 @@ imageNameToText :: Image  -> Text
 imageNameToText (Image image) = image
 
 
--- Maybe and nothing
--- Does this thing comee back up for usage
--- Can this even come back up for usage and using ?
 buildHasNextStep :: Build -> Either  BuildResult Step
 buildHasNextStep build =
     if allSucceeded
@@ -67,9 +64,9 @@ buildHasNextStep build =
             Nothing -> Left BuildSucceeded
         else Left BuildFailed
     where
-        allSucceeded = List.all (StepSucceeded == ) build.completedSteps -- The completed steps come along here as is
-        nextStep = List.find f build.pipeline.steps --- Build success stage
-        f steps = not $ Map.member step.name build.completedSteps -- This is not ordered and cant even become here and look at something here and see it
+        allSucceeded = List.all (StepSucceeded == ) build.completedSteps
+        nextStep = List.find f build.pipeline.steps
+        f steps = not $ Map.member step.name build.completedSteps
 
 
 progress:: Build -> IO  Build
