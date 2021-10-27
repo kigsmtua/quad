@@ -1,7 +1,6 @@
 module Main where
 
--- Does this even come close to come up and see if this is
--- WHat
+
 import RIO ( Applicative(pure), IO, Text )
 import Core
     ( Build(..),
@@ -38,7 +37,7 @@ testBuild :: Build
 testBuild = Build
     { pipeline = testPipeline
     , state = BuildReady
-    , completedSteps = mempty -- Monoid class and this is what the class looks like
+    , completedSteps = mempty
     }
 
 main :: IO()
