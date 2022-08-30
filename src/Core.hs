@@ -60,7 +60,7 @@ buildHasNextStep build =
     where
         allSucceeded = List.all ((==) StepSucceeded) build.completedSteps
         nextStep = List.find f build.pipeline.steps
-        f = not $ Map.member step.name build.completedSteps
+        f step = not $ Map.member step.name build.completedSteps
 
 
 progress :: Build -> IO Build
