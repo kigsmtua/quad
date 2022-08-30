@@ -58,7 +58,6 @@ buildHasNextStep build =
             Nothing -> Left  BuildSuceeded
         else Left BuildFailed
     where
-        --- This is not compiling and this is a problem
         allSucceeded = List.all ((==) StepSucceeded) build.completedSteps
         nextStep = List.find f build.pipeline.steps
         f = not $ Map.member step.name build.completedSteps

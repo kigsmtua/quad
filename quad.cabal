@@ -4,38 +4,25 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 5bc0470cea33a3fca4060aed4f7844125dd5249e514522d72a36a42378f32ead
+-- hash: db12221f335ba0ce0fec95638317c8556660cfe41384cc27c58a916b339d7f19
 
 name:           quad
-version:        0.1.0.0
-description:    Please see the README on GitHub at <https://github.com/githubuser/quad#readme>
-homepage:       https://github.com/githubuser/quad#readme
-bug-reports:    https://github.com/githubuser/quad/issues
-author:         Author name here
-maintainer:     example@example.com
-copyright:      2022 Author name here
+version:        0.0.0
 license:        BSD3
 license-file:   LICENSE
 build-type:     Simple
-extra-source-files:
-    README.md
-    CHANGELOG.md
-
-source-repository head
-  type: git
-  location: https://github.com/githubuser/quad
 
 library
   exposed-modules:
       Core
       Docker
-      Lib
       Socket
   other-modules:
       Paths_quad
   hs-source-dirs:
       src
-  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -F -pgmF=record-dot-preprocessor
+  default-extensions: BlockArguments DeriveAnyClass DeriveGeneric LambdaCase NoImplicitPrelude OverloadedStrings StrictData
+  ghc-options: -F -pgmF=record-dot-preprocessor
   build-depends:
       aeson
     , async
@@ -57,13 +44,14 @@ library
     , yaml
   default-language: Haskell2010
 
-executable quad-exe
+executable quad
   main-is: Main.hs
   other-modules:
       Paths_quad
   hs-source-dirs:
       app
-  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -F -pgmF=record-dot-preprocessor -threaded -rtsopts -with-rtsopts=-N
+  default-extensions: BlockArguments DeriveAnyClass DeriveGeneric LambdaCase NoImplicitPrelude OverloadedStrings StrictData
+  ghc-options: -F -pgmF=record-dot-preprocessor -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       aeson
     , async
@@ -93,13 +81,15 @@ test-suite quad-test
       Paths_quad
   hs-source-dirs:
       test
-  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -F -pgmF=record-dot-preprocessor -threaded -rtsopts -with-rtsopts=-N
+  default-extensions: BlockArguments DeriveAnyClass DeriveGeneric LambdaCase NoImplicitPrelude OverloadedStrings StrictData
+  ghc-options: -F -pgmF=record-dot-preprocessor -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       aeson
     , async
     , base
     , butcher
     , hslogger
+    , hspec
     , http-client
     , http-conduit
     , http-types

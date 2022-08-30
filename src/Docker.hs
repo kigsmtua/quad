@@ -1,5 +1,3 @@
-{-# LANGUAGE OverloadedStrings #-}
-
 module Docker where
 
 --- This is what happens when such things can be used here
