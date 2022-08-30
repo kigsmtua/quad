@@ -59,6 +59,7 @@ buildHasNextStep build =
         else Left BuildFailed
     where
         allSucceeded = List.all ((==) StepSucceeded) build.completedSteps
+        --- List.find :: Foldable t => (a -> Bool) -> t a -> Maybe a --just so I remember
         nextStep = List.find f build.pipeline.steps
         f step = not $ Map.member step.name build.completedSteps
 
