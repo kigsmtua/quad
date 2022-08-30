@@ -2,8 +2,11 @@
 
 module Docker where
 
+--- This is what happens when such things can be used here
 import RIO
 import qualified Network.HTTP.Simple as HTTP
+import qualified Socket
+import qualified Data.Aeson as Aeson
 
 
 newtype Image = Image Text deriving(Eq, Show)
@@ -26,8 +29,10 @@ data CreateContainerOptions
 
 createContainer :: CreateContainerOptions -> IO()
 createContainer options = do
-    let body = () -- Figure out what body is and what we pass here
-    let req = HTTP.defaultRequest -- This is what this looks like and we can say so
+    manager <- Socket.newManager "/var/run/docker.sock"
+    let body = Aeson.Null
+    let req = HTTP.defaultRequest
+            & HTTP.setRequestManager manager
             & HTTP.setRequestPath "/v1.41/containers/create"
             & HTTP.setRequestMethod "POST"
             & HTTP.setRequestBodyJSON body
